@@ -4,5 +4,7 @@
   "scripts": {
     "start": "wrangler dev"
   },
-  "devDependencies": {}
+  "dependencies": {
+    "wrangler": "^4.16.1"
+  }
 }
