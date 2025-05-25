@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>AI Market Plus</title>
+  <script src="https://js.stripe.com/v3/"></script>
+</head>
+<body style="font-family: Arial, sans-serif; text-align: center; padding: 40px;">
+  <h1>AI Market Plus</h1>
+  <p>Automate your hustle. Buy powerful AI tools now.</p>
+
+  <form method="POST" action="/subscribe">
+    <input type="email" name="email" placeholder="Enter your email" required />
+    <button type="submit">Subscribe</button>
+  </form>
+
+  <div style="margin-top: 30px;">
+    <button id="checkout-button">Buy AI Toolkit - $29</button>
+  </div>
+
+  <script>
+    document.getElementById('checkout-button').addEventListener('click', async () => {
+      const res = await fetch('/create-checkout-session', { method: 'POST' });
+      const { id } = await res.json();
+      const stripe = Stripe('sk_test_51RSmnPDicwwOmyGAlOukdQoU9YcvTZojzNpaEEqNnQqyrDaGdGu7PCZiEIYCHLRuucsfBxocBzDjoHnECitLVhK700S2VHBj81'); // Replace with your public key
+      stripe.redirectToCheckout({ sessionId: id });
+    });
+  </script>
+</body>
+</html>
