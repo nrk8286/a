@@ -1,4 +1,12 @@
 name = "ai-market-plus"
 compatibility_date = "2024-05-01"
-main = "src/index.ts"
-type = "javascript"
+main = "ai-market-plus-stripe/src/index.ts"
+
+# Environment variables (non-sensitive)
+[vars]
+STRIPE_PUBLIC_KEY = "pk_test_replace_with_your_public_key"
+SUCCESS_URL = "https://yourdomain.com/success"
+CANCEL_URL = "https://yourdomain.com/cancel"
+
+# For secrets, use: wrangler secret put STRIPE_SECRET_KEY
+# Example: echo "sk_test_your_secret_key" | wrangler secret put STRIPE_SECRET_KEY
