@@ -1,9 +1,10 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Search, Star, Users, DollarSign, ArrowRight, CheckCircle } from 'lucide-react';
 import { useState } from 'react';
 
 export const Landing = () => {
   const [searchQuery, setSearchQuery] = useState('');
+  const navigate = useNavigate();
 
   const featuredServices = [
     {
@@ -82,7 +83,7 @@ export const Landing = () => {
   const handleSearch = (e) => {
     e.preventDefault();
     // Navigate to services page with search query
-    window.location.href = `/services?q=${encodeURIComponent(searchQuery)}`;
+    navigate(`/services?q=${encodeURIComponent(searchQuery)}`);
   };
 
   return (

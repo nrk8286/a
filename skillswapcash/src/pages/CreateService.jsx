@@ -70,11 +70,17 @@ export const CreateService = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // Handle service creation
-    console.log('Creating service:', formData);
-    // API call would go here
-    alert('Service created successfully!');
-    navigate('/services');
+    try {
+      // Handle service creation
+      // TODO: Replace with actual API call
+      // await api.post('/services', formData);
+      
+      // Navigate to services page on success
+      navigate('/services');
+    } catch (error) {
+      // TODO: Add proper error handling with toast notifications
+      console.error('Error creating service:', error);
+    }
   };
 
   return (
