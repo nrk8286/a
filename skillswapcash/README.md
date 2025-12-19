@@ -80,6 +80,26 @@ The production-ready files will be in the `dist/` directory.
 npm run preview
 ```
 
+## ☁️ Deploy to Cloudflare Pages
+
+This application is ready to deploy to Cloudflare Pages. See [CLOUDFLARE_DEPLOYMENT.md](./CLOUDFLARE_DEPLOYMENT.md) for detailed instructions.
+
+**Quick deploy:**
+
+```bash
+# Install Wrangler CLI
+npm install -g wrangler
+
+# Login to Cloudflare
+wrangler login
+
+# Build and deploy
+npm run build
+wrangler pages deploy dist --project-name=skillswapcash
+```
+
+Or connect your GitHub repository to Cloudflare Pages dashboard for automatic deployments.
+
 ## 🎨 Design System
 
 ### Color Scheme
