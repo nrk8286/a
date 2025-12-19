@@ -235,8 +235,16 @@ export default {
     
     // Serve static HTML with caching headers
     if (url.pathname === "/" || url.pathname === "/index.html") {
+      // Validate that Stripe public key is configured
+      if (!env.STRIPE_PUBLIC_KEY) {
+        return new Response("Application not configured. Please set STRIPE_PUBLIC_KEY environment variable.", { 
+          status: 500,
+          headers: { "Content-Type": "text/plain" }
+        });
+      }
+      
       // Replace placeholder with actual public key from environment
-      const html = htmlContent.replace('STRIPE_PUBLIC_KEY_PLACEHOLDER', env.STRIPE_PUBLIC_KEY || 'pk_test_replace_me');
+      const html = htmlContent.replace('STRIPE_PUBLIC_KEY_PLACEHOLDER', env.STRIPE_PUBLIC_KEY);
       
       return new Response(html, { 
         headers: { 
